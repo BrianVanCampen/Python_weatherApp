@@ -6,7 +6,7 @@ from pytz import timezone
 
 app = Flask(__name__)
 
-API_KEY = "3ecaf32bd1f56571461cfc91f00c4085"
+API_KEY = "YOUR  Openweathermap  API KEY"
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -57,3 +57,4 @@ def home():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
