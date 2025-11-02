@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🌦️ Weather App</h1>
+        <form method="POST" class="search-form">
+            <input type="text" name="city" placeholder="Enter city name..." required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if weather %}
+            {% if weather.error %}
+                <p class="error">{{ weather.error }}</p>
+            {% else %}
+                <div class="card">
+                    <h2>{{ weather.city }}, {{ weather.country }}</h2>
+                    <p class="time">{{ weather.time }}</p>
+                    <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="Weather icon">
+                    <h3 class="temp">{{ weather.temp }}°C</h3>
+                    <p class="desc">{{ weather.description }}</p>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
